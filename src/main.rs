@@ -35,13 +35,12 @@ fn main() {
         latitude: 40.7861
     };
 
-
     let kcle_kslc = Segment::new(kcle, kslc);
 
     let mut total_distance = 0.0;
     let mut previous_waypoint: Option<(&str, f64, f64)> = None;
 
-    for waypoint in route.iter() {
+    for waypoint in kcle_kslc {
         match previous_waypoint {
             None => {
                 previous_waypoint = Option::from(waypoint.clone());
