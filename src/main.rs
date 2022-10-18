@@ -1,11 +1,42 @@
+
+
+struct Waypoint {
+    name: String,
+    longitude: f64,
+    latitude: f64
+}
+
+struct Segment {
+    start: Waypoint,
+    end: Waypoint
+}
+
+impl Segment {
+    fn new(start: Waypoint, end: Waypoint) -> Self {
+        Self {
+            start,
+            end
+        }
+    }
+}
+
 fn main() {
 
     const EARTH_RADIUS_IN_KILOMETERS: f64 = 6371.0;
 
-    let route = [
-        ("KCLE", 41.4075, -81.851111),
-        ("KSLC", 40.7861, -111.9822)
-    ];
+    let kcle = Waypoint {
+        name: "KCLE".to_string(),
+        longitude: -81.851111,
+        latitude: 41.4075
+    };
+    let kslc = Waypoint {
+        name: "KSLC".to_string(),
+        longitude: -111.9822,
+        latitude: 40.7861
+    };
+
+
+    let kcle_kslc = Segment::new(kcle, kslc);
 
     let mut total_distance = 0.0;
     let mut previous_waypoint: Option<(&str, f64, f64)> = None;
@@ -39,4 +70,3 @@ fn main() {
 
     println!("\nThe total distance between the two points is {:.1} kilometers", total_distance);
 }
-
