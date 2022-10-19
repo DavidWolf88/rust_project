@@ -18,6 +18,10 @@ impl Segment {
             end
         }
     }
+
+    fn distance(&self) -> f32 {
+        
+    }
 }
 
 fn main() {
